@@ -1,6 +1,6 @@
 package me.shulinina.web34.controller;
 import me.shulinina.web34.model.Recipe;
-import me.shulinina.web34.services.RecipeService;
+import me.shulinina.web34.service.RecipeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;

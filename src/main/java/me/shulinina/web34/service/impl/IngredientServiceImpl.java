@@ -1,6 +1,6 @@
 package me.shulinina.web34.service.impl;
 import me.shulinina.web34.model.Ingredient;
-import me.shulinina.web34.services.IngredientService;
+import me.shulinina.web34.service.IngredientService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import java.util.TreeMap;
