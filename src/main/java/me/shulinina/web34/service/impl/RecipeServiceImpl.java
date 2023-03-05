@@ -4,9 +4,11 @@ import me.shulinina.web34.service.RecipeService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import java.util.TreeMap;
+import lombok.NonNull;
+@NonNull
 @Service
 public class RecipeServiceImpl implements RecipeService {
-    private static final Map<Long, Recipe> recipes = new TreeMap<>();
+    private static Map<Long, Recipe> recipes = new TreeMap<>();
     private static long lastId = 0;
     @Override
     public long addRecipe(Recipe recipe) {
@@ -14,11 +16,41 @@ public class RecipeServiceImpl implements RecipeService {
         return lastId++;
     }
     @Override
-    public long getRecipe(Recipe recipe) {
-        return 0;
+    public Recipe getRecipe(long id) {
+        for (Recipe r : recipes.values()) {
+            Recipe recipe = recipes.get(id);
+            if (recipe != null) {
+                return recipe;
+            }
+        }
+        return null;
     }
     @Override
-    public Recipe getRecipe(long id) {
-        return recipes.get(id);
+    public Recipe editRecipe(long id, Recipe recipe) {
+        for (Recipe r : recipes.values()) {
+            if (recipes.containsKey(id)) {
+                recipes.put(id, recipe);
+                return recipe;
+            }
+        }
+        return null;
+    }
+    @Override
+    public boolean deleteRecipe(long id) {
+        for (Recipe r : recipes.values()) {
+            if (recipes.containsKey(id)) {
+                recipes.remove(id);
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public void deleteAllRecipe() {
+        recipes = new TreeMap<>();
+    }
+    @Override
+    public Recipe getAllRecipe() {
+        return null;
     }
 }

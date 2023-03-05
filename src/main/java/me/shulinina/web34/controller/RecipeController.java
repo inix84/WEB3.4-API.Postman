@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/recipes")
 public class RecipeController {
     private final RecipeService recipeService;
-
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
@@ -20,11 +19,36 @@ public class RecipeController {
         return ResponseEntity.ok(id);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Recipe>getRecipeById(@PathVariable long id){ //Получение рецепта
+    public ResponseEntity<Recipe>getRecipeById(@PathVariable long id){ //Получение рецепта по id
         Recipe recipe = recipeService.getRecipe(id);
         if (recipe==null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(recipe);
+    }
+    @GetMapping
+    public ResponseEntity<Recipe> getAllRecipe() {   //Получение списка всех рецептов
+        recipeService.getAllRecipe();
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Recipe> editRecipe(@PathVariable long id, @RequestBody Recipe recipe) {//Редактирование рецепта по id
+        Recipe r = recipeService.editRecipe(id, recipe);
+        if (recipe == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(recipe);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRecipe(@PathVariable long id) {// Удаление рецепта по id
+        if (recipeService.deleteRecipe(id)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllRecipe() {//Удаление всех рецептов
+        recipeService.deleteAllRecipe();
+        return ResponseEntity.ok().build();
     }
 }

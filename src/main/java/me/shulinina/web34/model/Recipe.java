@@ -1,44 +1,15 @@
 package me.shulinina.web34.model;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 @Data
-public class Recipe {
-    private final String name;
-    private final int cookingTime;
-    private ArrayList<Ingredient> ingredient = new ArrayList<>();
-    private ArrayList<Cooking> cookingStep = new ArrayList<>();
-    public Recipe(String name, int cookingTime, ArrayList<Ingredient> ingredient, ArrayList<Cooking> cookingStep) {
-        this.name = name;
-        this.cookingTime = cookingTime;
-        this.ingredient = ingredient;
-        this.cookingStep = cookingStep;
-    }
-    @Override
-    public String toString() {
-        return "Рецепт: " + name +
-                ".\n Время готовки: " + cookingTime + " минут" +
-                ".\n Ингридиенты: " + ingredient +
-                ".\n Шаги приготовления: " + cookingStep;
-    }
-    public String getRecipeName() {
-        return name;
-    }
-    public int getCookingTime() {
-        return cookingTime;
-    }
-    public String getName() {
-        return name;
-    }
-    public ArrayList<Cooking> getCookingStep() {
-        return cookingStep;
-    }
-    public void setCookingStep(ArrayList<Cooking> cookingStep) {
-        this.cookingStep = cookingStep;
-    }
-    public ArrayList<Ingredient> getIngredient() {
-        return ingredient;
-    }
-    public void setIngredient(ArrayList<Ingredient> ingredient) {
-        this.ingredient = ingredient;
-    }
+@AllArgsConstructor
+public class Recipe {//класс описывает рецепты
+    private String name;
+    private int cookingTime;
+    private List<Ingredient> ingredients;
+    private LinkedList<String> steps;
+    private Map<Long, Recipe>recipes;
 }

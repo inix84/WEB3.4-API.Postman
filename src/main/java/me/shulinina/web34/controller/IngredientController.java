@@ -16,11 +16,36 @@ public class IngredientController {
         return ResponseEntity.ok(id);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Ingredient>getIngredientById(@PathVariable long id){  //Получение ингредиента
+    public ResponseEntity<Ingredient>getIngredientById(@PathVariable long id){  //Получение ингредиента по id
         Ingredient ingredient = ingredientService.getIngredient(id);
         if (ingredient==null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(ingredient);
+    }
+    @GetMapping
+    public ResponseEntity<Ingredient> getAllIngredient() {  // Получение списка всех ингредиентов
+        ingredientService.getAllIngredient();
+        return ResponseEntity.ok().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Ingredient> editIngredient(@PathVariable long id, @RequestBody Ingredient ingredient) { //Редактирование ингредиента по id
+        Ingredient n = ingredientService.editIngredient(id, ingredient);
+        if (ingredient == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ingredient);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIngredient(@PathVariable long id) {   //Удаление ингредиента по id
+        if (ingredientService.deleteIngredient(id)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllIngredient() { //Удаление всех ингредиентов
+        ingredientService.deleteAllIngredient();
+        return ResponseEntity.ok().build();
     }
 }
