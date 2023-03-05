@@ -11,12 +11,12 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
     @PostMapping
-    public ResponseEntity<Long> addIngredient(@RequestBody Ingredient ingredient){  //Добавление нового ингредиента
+    public ResponseEntity<Long> addIngredient(@RequestBody Ingredient ingredient){  // Добавление ингредиента.
         long id =  ingredientService.addIngredient(ingredient);
         return ResponseEntity.ok(id);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Ingredient>getIngredientById(@PathVariable long id){  //Получение ингредиента по id
+    public ResponseEntity<Ingredient>getIngredientById(@PathVariable long id){  //Получение информации об ингредиенте по id.
         Ingredient ingredient = ingredientService.getIngredient(id);
         if (ingredient==null){
             return ResponseEntity.notFound().build();
@@ -24,12 +24,12 @@ public class IngredientController {
         return ResponseEntity.ok(ingredient);
     }
     @GetMapping
-    public ResponseEntity<Ingredient> getAllIngredient() {  // Получение списка всех ингредиентов
+    public ResponseEntity<Ingredient> getAllIngredient() {  // Получение полного списка ингредиентов.
         ingredientService.getAllIngredient();
         return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Ingredient> editIngredient(@PathVariable long id, @RequestBody Ingredient ingredient) { //Редактирование ингредиента по id
+    public ResponseEntity<Ingredient> editIngredient(@PathVariable long id, @RequestBody Ingredient ingredient) { //Редактирование ингредиента по id.
         Ingredient n = ingredientService.editIngredient(id, ingredient);
         if (ingredient == null) {
             return ResponseEntity.notFound().build();
@@ -37,7 +37,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredient);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIngredient(@PathVariable long id) {   //Удаление ингредиента по id
+    public ResponseEntity<Void> deleteIngredient(@PathVariable long id) {   //Удаление ингредиента.
         if (ingredientService.deleteIngredient(id)) {
             return ResponseEntity.ok().build();
         }

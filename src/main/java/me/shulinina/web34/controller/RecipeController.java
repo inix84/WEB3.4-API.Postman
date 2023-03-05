@@ -14,12 +14,12 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
     @PostMapping
-    public ResponseEntity<Long>addRecipe(@RequestBody Recipe recipe){   //Добавление нового рецепта
+    public ResponseEntity<Long>addRecipe(@RequestBody Recipe recipe){   //Добавление рецепта.
         long id =  recipeService.addRecipe(recipe);
         return ResponseEntity.ok(id);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Recipe>getRecipeById(@PathVariable long id){ //Получение рецепта по id
+    public ResponseEntity<Recipe>getRecipeById(@PathVariable long id){ //Получение рецепта по id.
         Recipe recipe = recipeService.getRecipe(id);
         if (recipe==null){
             return ResponseEntity.notFound().build();
@@ -27,12 +27,12 @@ public class RecipeController {
         return ResponseEntity.ok(recipe);
     }
     @GetMapping
-    public ResponseEntity<Recipe> getAllRecipe() {   //Получение списка всех рецептов
+    public ResponseEntity<Recipe> getAllRecipe() {   //Получение списка всех рецептов.
         recipeService.getAllRecipe();
         return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Recipe> editRecipe(@PathVariable long id, @RequestBody Recipe recipe) {//Редактирование рецепта по id
+    public ResponseEntity<Recipe> editRecipe(@PathVariable long id, @RequestBody Recipe recipe) {//Редактирование рецепта по id.
         Recipe r = recipeService.editRecipe(id, recipe);
         if (recipe == null) {
             return ResponseEntity.notFound().build();
@@ -40,7 +40,7 @@ public class RecipeController {
         return ResponseEntity.ok(recipe);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRecipe(@PathVariable long id) {// Удаление рецепта по id
+    public ResponseEntity<Void> deleteRecipe(@PathVariable long id) {//Удаление рецепта по id.
         if (recipeService.deleteRecipe(id)) {
             return ResponseEntity.ok().build();
         }
