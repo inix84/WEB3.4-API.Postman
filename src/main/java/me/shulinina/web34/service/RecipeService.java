@@ -9,7 +9,5 @@ public interface RecipeService {
     Recipe editRecipe(long id, Recipe recipe);
     boolean deleteRecipe(long id);
     void deleteAllRecipe();
-    Recipe getAllRecipe();
-
     Collection<Recipe> getAll();
 }
