@@ -25,7 +25,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
     @Override
     public Ingredient getAllIngredient() {
-        return null;
+        return (Ingredient) ingredients;
     }
     @Override
     public Ingredient editIngredient(long id, Ingredient ingredient) {

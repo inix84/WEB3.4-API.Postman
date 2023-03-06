@@ -51,6 +51,6 @@ public class RecipeServiceImpl implements RecipeService {
     }
     @Override
     public Recipe getAllRecipe() {
-        return null;
+        return (Recipe) recipes;
     }
 }
