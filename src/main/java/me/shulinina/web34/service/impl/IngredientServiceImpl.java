@@ -2,6 +2,8 @@ package me.shulinina.web34.service.impl;
 import me.shulinina.web34.model.Ingredient;
 import me.shulinina.web34.service.IngredientService;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 @Service
@@ -26,6 +28,10 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public Ingredient getAllIngredient() {
         return (Ingredient) ingredients;
+    }
+@Override
+        public Collection<Ingredient> getAll() {
+        return ingredients.values();
     }
     @Override
     public Ingredient editIngredient(long id, Ingredient ingredient) {

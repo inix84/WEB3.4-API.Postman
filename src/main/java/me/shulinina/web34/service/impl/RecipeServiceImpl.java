@@ -2,6 +2,8 @@ package me.shulinina.web34.service.impl;
 import me.shulinina.web34.model.Recipe;
 import me.shulinina.web34.service.RecipeService;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 import lombok.NonNull;
@@ -52,5 +54,9 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Recipe getAllRecipe() {
         return (Recipe) recipes;
+    }
+    @Override
+    public Collection<Recipe> getAll() {
+        return recipes.values();
     }
 }
