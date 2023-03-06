@@ -52,10 +52,6 @@ public class RecipeServiceImpl implements RecipeService {
         recipes = new TreeMap<>();
     }
     @Override
-    public Recipe getAllRecipe() {
-        return (Recipe) recipes;
-    }
-    @Override
     public Collection<Recipe> getAll() {
         return recipes.values();
     }

@@ -25,10 +25,6 @@ public class IngredientServiceImpl implements IngredientService {
         }
         return null;
     }
-    @Override
-    public Ingredient getAllIngredient() {
-        return (Ingredient) ingredients;
-    }
 @Override
         public Collection<Ingredient> getAll() {
         return ingredients.values();

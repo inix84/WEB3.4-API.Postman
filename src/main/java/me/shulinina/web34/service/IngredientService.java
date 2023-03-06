@@ -6,8 +6,7 @@ import java.util.Collection;
 public interface IngredientService {
     long addIngredient(Ingredient ingredient);
     Ingredient getIngredient(long id);
-    Ingredient getAllIngredient();
-     Collection<Ingredient> getAll();
+    Collection<Ingredient> getAll();
     Ingredient editIngredient(long id, Ingredient ingredient);
     boolean deleteIngredient(long id);
     void deleteAllIngredient();
