@@ -25,7 +25,7 @@ public class IngredientController {
     }
     @GetMapping
     public ResponseEntity<Ingredient> getAllIngredient() {  // Получение полного списка ингредиентов.
-        ingredientService.getAllIngredient();
+        ingredientService.getAll();
         return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")

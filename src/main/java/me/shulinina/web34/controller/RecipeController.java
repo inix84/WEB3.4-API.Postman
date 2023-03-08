@@ -28,7 +28,7 @@ public class RecipeController {
     }
     @GetMapping
     public ResponseEntity<Recipe> getAllRecipe() {   //Получение списка всех рецептов.
-        recipeService.getAllRecipe();
+        recipeService.getAll();
         return ResponseEntity.ok().build();
     }
     @PutMapping("/{id}")

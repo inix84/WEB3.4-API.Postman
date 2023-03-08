@@ -10,11 +10,18 @@ public class FirstController {
     }
 
     @GetMapping("/info")
-    public String info(String nameStudent, String nameProject, LocalDate dateProject, String descriptionProject){
+    public String info(String nameStudent,
+                       String nameProject,
+                       LocalDate dateProject,
+                       String descriptionProject){
         nameStudent = "Marina";
         nameProject = "Рецепты";
         dateProject = LocalDate.now();
         descriptionProject = "Веб приложение для рецептов";
-        return "Приложение запущено " + " / " + nameStudent + " / " + nameProject + " / " + dateProject +" / " + descriptionProject;
+        return "Приложение запущено " + " / "
+                + nameStudent + " / "
+                + nameProject + " / "
+                + dateProject +" / "
+                + descriptionProject;
     }
 }
